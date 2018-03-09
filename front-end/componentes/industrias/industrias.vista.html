@@ -1,0 +1,119 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="industriasCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon ng-click="redirectPerfil($event)" icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+                      md-disable-backdrop md-whiteframe="4">
+
+            <md-content layout-margin class="aside">
+              <md-button ng-click="industriasCtrl.toggleLeft()" class="pull-right">
+                <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+              </md-button>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="proyectos">Proyectos</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="solicitudesPortulantes">Solicitudes</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="agregarUsuarios">Usuarios</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="carreras">Carreras</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="industrias">Industrias</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="reportes">Reportes</a>
+            </md-content>
+            <md-button ng-click="industriasCtrl.cerrarSesion()">
+              <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+            </md-button>
+          </md-sidenav>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div ng-controller="industriasControlador">
+    <md-content>
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab id="tab1">
+          <md-tab-label>Industrias</md-tab-label>
+            <md-tab-body>
+            <div class="container" id="contenidoInd">
+                <div class="barra-inicial">
+                  <h2>Industrias</h2>
+                  <div class="row encabezadoInd">
+                    <div class="col-md-6">
+                      <h5>Industria</h5>
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                      <h5>Eliminar</h5>
+                    </div>
+                  </div>
+                </div>
+              <div class="pre-scrollable" id="industrias">
+                <div id="divisor" ng-repeat='indutria in industriasCtrl.listaIndustrias'>
+                  <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                      <output name="nombreCa" class="nombreCa">{{indutria.tipo}}</output>
+                    </div>
+                      <div class="col-md-6 col-xs-6" id="eliminarInd">
+                        <ng-md-icon icon="delete" ng-click='industriasCtrl.delete(indutria.tipo)' style="fill: #FFC107;" size="33px"></ng-md-icon>
+                      </div>
+                  </div>
+                <hr>
+                </div>
+              </div>
+            </div>
+        </md-tab-body>
+        </md-tab>
+        <md-tab>
+          <md-tab-label>Agregar industria</md-tab-label>
+            <md-tab-body>
+            <div class="container" id="contenidoInd">
+              <div class="barra-inicial">
+                <h2>Nueva industria</h2>
+              </div>
+              <form id="formIndustria" name="formIndustria">
+               <md-input-container class="md-block" flex-gt-sm>
+              <label>Industria</label>
+              <input required name="industria" ng-model="industriasCtrl.tipo">
+              <div ng-messages="formIndustria.industria.$error">
+                <div ng-message="required">Nombre requerido.</div>
+              </div>
+              </md-input-container>
+              <div layout ="row" class="pull-right">
+              <md-button id="guardarInd" ng-click="industriasCtrl.save()">
+                Guardar
+              </md-button>
+            </div>
+            </form>
+        </div>
+          </md-tab-body>
+        </md-tab>
+      </md-tabs>
+    </md-content>
+  </div>
+</div>

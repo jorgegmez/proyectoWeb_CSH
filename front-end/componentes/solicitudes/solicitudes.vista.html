@@ -1,0 +1,148 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="solicitudesCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+            md-disable-backdrop md-whiteframe="4">
+
+            <md-button ng-click="solicitudesCtrl.toggleLeft()" class="pull-right">
+              <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+            </md-button>
+
+          </md-content>
+          <md-content layout-margin class="aside">
+            <a ui-sref="proyectos">Proyectos</a>
+          </md-content>
+          <md-content layout-margin class="aside">
+            <a ui-sref="solicitudesPortulantes">Solicitudes</a>
+          </md-content>
+          <md-content layout-margin class="aside">
+            <a ui-sref="agregarUsuarios">Usuarios</a>
+          </md-content>
+          <md-content layout-margin class="aside">
+            <a ui-sref="carreras">Carreras</a>
+          </md-content>
+          <md-content layout-margin class="aside">
+            <a ui-sref="industrias">Industrias</a>
+          </md-content>
+          <md-content layout-margin class="aside">
+            <a ui-sref="reportes">Reportes</a>
+          </md-content>
+          <md-button ng-click="solicitudesCtrl.cerrarSesion()">
+            <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+          </md-button>
+            </md-content>
+
+          </md-sidenav>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div ng-cloak>
+      <md-content id="content">
+        <div class="container" id="contenidoSoli">
+            <div class="barra-inicialPost">
+              <md-input-container>
+              <label>Buscar postulante</label>
+                <input ng-model="buscarPost">
+              </md-input-container>
+              <div layout="row">
+                <h2>Solicitudes</h2>
+              </div>
+            </div>
+            <div class="row" ng-repeat="solicitudes in solicitudesCtrl.soliEstudiantes | filter:buscarPost" id="solicitudes">
+              <div class="col-xs-3 col-sm-3 col-md-3">
+                <img src="{{solicitudes.foto}}" alt="Foto del solicitante" width="150px" height="200px">
+                </div>
+                <div class="col-md-9">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <output name="nombreEstudiante" id="txtSoliNombreEstud"><strong>Nombre</strong>:  {{solicitudes.nombre}}</output>
+                    </div>
+                    <div class="col-md-6">
+                      <output name="cedulaEstudiante" id="txtSoliCedulaEstud"><strong>Cédula</strong>: {{solicitudes.cedula}}</output>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <output name="edadEstudiante" id="txtSoliEdadEstud"><strong>Edad</strong>: {{solicitudes.edad}}</output>
+                    </div>
+                    <div class="col-md-6">
+                      <output name="generoEstudiante" id="txtSoliGeneroEstud"><strong>Género:</strong> {{solicitudes.genero}}</output>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <output name="carreraEstudiante" id="txtSoliCarreraEstud"><strong>Carrera:</strong> {{solicitudes.carrera}}</output>
+                    </div>
+                    <div class="col-md-6">
+                      <output name="cursosEstudiante" id="txtSoliCursosEstud"><strong>Cursos:</strong> {{solicitudes.cursos}}</output>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <output name="estado1Estudiante" ><strong>Estado inicial:</strong> {{solicitudes.estado1}}</output>
+                    </div>
+                    <div class="col-md-6" ng-show="solicitudes.estado1 == 'Aceptado'">
+                      <md-button  ng-click="redirectUsuarios()">
+                          Crear Usuario
+                      </md-button>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+                <div class="row">
+                  <div class="col-xs-5 col-sm-5 col-md-5">
+                    <output name="curriculumEstudiante" id="txtSoliCurriculumEstud">Curriculum:
+                      <md-button id="verEst" ng-click="showAlert($event)"   >
+                        Ver
+                      </md-button>
+                    </output>
+                  </div>
+                  <div class="col-xs-4 col-sm-4 col-md-4">
+                    <output name="portafolioEstudiante" id="txtSoliPortafolioEstud">Portafolio:
+                      <md-button id="verEst" ng-click="showAlert($event)"   >
+                        Ver
+                      </md-button>
+                    </output>
+                  </div>
+                </div>
+
+                <div class="row" ng-show="solicitudes.estado1 == 'en espera'">
+                  <md-button id="estadoEst" ng-click="procesarEstado1Estudiante(solicitudes.cedula, 'Aceptado')">
+                      Aceptar
+                  </md-button>
+                  <md-button id="estadoEst" ng-click="procesarEstado1Estudiante(solicitudes.cedula,'Rechazado')">
+                      Rechazar
+                  </md-button>
+                </div>
+              </div>
+            </div>
+            </md-content>
+
+          </div>
+      </div>
+    </div>
+<div ui-view></div>

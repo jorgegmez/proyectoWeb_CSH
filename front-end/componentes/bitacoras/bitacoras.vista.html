@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="bitaCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a class="pull-right"><ng-md-icon ng-click="redirectPerfil($event)" icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+                      md-disable-backdrop md-whiteframe="4">
+
+            <md-content layout-margin class="aside">
+              <md-button ng-click="bitaCtrl.toggleLeft()" class="pull-right">
+                <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+              </md-button>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="proyectos">Proyectos</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="bitacoras">Bitácoras</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="industrias">Reportes</a>
+            </md-content>
+            <md-button ng-click="bitaCtrl.cerrarSesion()">
+              <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+            </md-button>
+          </md-sidenav>
+        </section>
+      </div>
+
+<div ng-controller="bitacoraControlador">
+  <div class="container" id="contenidoBitacora">
+      <div class="barra-inicial">
+        <h1>Llenar Bitácora</h1>
+      </div>
+      <form name="formBitacora" id="bitacora">
+        <div layout="row">
+        <md-input-container class="md-block" flex="50">
+        <label>Fecha</label>
+        <md-datepicker ng-model="bitaCtrl.fecha" md-placeholder="Fecha"></md-datepicker>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container class="md-block" ng-repeat="bitacora in bitacoras">
+          <label>Escriba el avance de su trabajo hoy</label>
+          <textarea ng-model="bitaCtrl.descripcion" rows="5" md-select-on-focus>{{bitacoras.descripcion}}</textarea>
+        </md-input-container>
+      </div>
+        <hr>
+        <div>
+          <h3>Descripción:</h3>
+          <output></output>
+        </div>
+        <hr>
+        <md-button ng-click="saveBitacora()" class="pull-right">
+          Guardar
+        </md-button>
+      </form>
+
+    </div>
+  </div>
+</div>

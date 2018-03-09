@@ -1,0 +1,109 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="eliminarCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon ng-click="redirectPerfil($event)" icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" style="height: 100%" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+                      md-disable-backdrop md-whiteframe="4">
+
+            <md-content layout-margin class="aside">
+              <md-button ng-click="eliminarCtrl.toggleLeft()" class="pull-right">
+                <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+              </md-button>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="proyectos">Proyectos</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="solicitudesPortulantes">Solicitudes</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="agregarUsuarios">Usuarios</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="carreras">Carreras</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="industrias">Industrias</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="reportes">Reportes</a>
+            </md-content>
+            <md-button ng-click="eliminarCtrl.cerrarSesion()">
+              <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+            </md-button>
+          </md-sidenav>
+        </section>
+      </div>
+
+
+
+
+      <div class="container" id="contenidoElimUsu">
+          <div class="barra-inicial">
+            <h2>Eliminar usuarios</h2>
+          </div>
+          <div class="row">
+              <div class="container-fluid">
+                  <div class="row encabezadoEliminarUsu">
+                    <div class="col-md-4">
+                      <p>Escoger tipo de usuario</p>
+                    </div>
+                    <div class="col-md-8">
+                      <md-radio-group ng-model="buscar" class="radioButtons" layout="row">
+
+                        <md-radio-button value="asistente" class="md-primary">Asistente</md-radio-button>
+                        <md-radio-button value="profesor" class="md-primary"> Profesores </md-radio-button>
+                        <md-radio-button value="estudiante" class="md-primary">Estudiantes</md-radio-button>
+                        <md-radio-button value="concejo" class="md-primary">Concejo</md-radio-button>
+                        <md-radio-button value="" class="md-primary">Todos</md-radio-button>
+
+                      </md-radio-group>
+                    </div>
+                  </div>
+                </div>
+                <table class="table" id="eliminarUsuarios">
+                  <thead>
+                    <th>Nombre</th>
+                    <th>Cedula</th>
+                    <th>Correo</th>
+                    <th>Eliminar</th>
+                  </thead>
+                  <tbody ng-repeat="eliminar in eliminarCtrl.listaUsuarios |filter:buscar">
+                    <tr>
+                      <td>{{eliminar.nombre}}</td>
+                      <td>{{eliminar.cedula}}</td>
+                      <td>{{eliminar.correo}}</td>
+                      <td><a ng-click="eliminarCtrl.remove(eliminar.cedula, eliminarCtrl.usuarios)" class="btn"><ng-md-icon icon="delete"  style="fill: #FFC107;" size="25px"></ng-md-icon></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" id="contenedorMensaje">
+              <output id="mensajeUsuario" class="errorFont"></output>
+            </div>
+          </div>
+    <md-button id="btnVolver" class="col-md-2 pull-right" ng-click='redirectUsuarios($event)'>
+        Volver
+    </md-button>
+  </div>
+</div>

@@ -1,0 +1,138 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="listaProfCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon ng-click="redirectPerfil($event)" icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+                      md-disable-backdrop md-whiteframe="4">
+
+            <md-content layout-margin class="aside">
+              <md-button ng-click="listaProfCtrl.toggleLeft()" class="pull-right">
+                <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+              </md-button>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="proyectos">Proyectos</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="solicitudesPortulantes">Solicitudes</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="agregarUsuarios">Usuarios</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="carreras">Carreras</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="industrias">Industrias</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="reportes">Reportes</a>
+            </md-content>
+            <md-button ng-click="listaProfCtrl.cerrarSesion()">
+              <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+            </md-button>
+          </md-sidenav>
+        </section>
+      </div>
+
+      <div ng-controller="listarProfControlador">
+        <div class="container" id="contenidolistaEq">
+          <div class="barra-inicialEquipo">
+            <output name="nombreP" class="nombreP"><h2> Equipo de  {{proyecto.nombreP}}</h2></output>
+          </div>
+          <div id="equipos">
+          <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Profesores">
+              <md-content>
+                <div class="row">
+                  <div class="col-md-3 col-sm-2">
+                  <h5>Nombre</h5>
+                  </div>
+                  <div class="col-md-3 col-sm-2">
+                    <h5>Apellidos</h5>
+                  </div>
+                  <div class="col-md-3 col-sm-2">
+                    <h5>Correo</h5>
+                  </div>
+                  <div class="col-md-3 col-sm-2 sinPadding">
+                    <h5>Eliminar</h5>
+                  </div>
+              </div>
+                <div class="row" ng-repeat="profesor in proyecto.profesoresA track by $index">
+                  <div class="col-md-3">
+                    <p>{{profesor.nombre}}</p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>{{profesor.apellidos}}</p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>{{profesor.correo}}</p>
+                  </div>
+                  <div class="col-md-3 sinPadding" id="eliminarEq">
+                    <ng-md-icon icon="delete" ng-click='eliminarProfProyecto(proyecto.nombreP,profesor.cedula)' style="fill: #FFC107;" size="25px"></ng-md-icon>
+                  </div>
+                </div>
+                <hr>
+              </md-content>
+            </md-tab>
+            <md-tab label="Estudiantes">
+              <md-content>
+                <div class="row">
+                  <div class="col-md-3 col-sm-2">
+                  <h5>Nombre</h5>
+                  </div>
+                  <div class="col-md-3 col-sm-2">
+                    <h5>Apellidos</h5>
+                  </div>
+                  <div class="col-md-3 col-sm-2">
+                    <h5>Correo</h5>
+                  </div>
+                  <div class="col-md-3 col-sm-2 sinPadding">
+                    <h5>Eliminar</h5>
+                  </div>
+              </div>
+                <div class="row"  ng-repeat="estudiante in proyecto.estudiantes track by $index">
+                  <div class="col-md-3">
+                    <p>{{estudiante.nombre}}</p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>{{estudiante.apellidos}}</p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>{{estudiante.correo}}</p>
+                  </div>
+                  <div class="col-md-3 sinPadding" id="eliminarEq">
+                    <ng-md-icon icon="delete" ng-click='eliminarEstProyecto(proyecto.nombreP,estudiante.cedula)' style="fill: #FFC107;" size="25px"></ng-md-icon>
+                  </div>
+                </div>
+                <hr>
+              </md-content>
+            </md-tab>
+          </md-tabs>
+        </div>
+      </div>
+      <div class="row">
+        <md-button id="btnVolver" class="col-md-2 pull-right" ng-click='redirectInfoProyecto(proyecto.nombreP)'>
+            Volver
+        </md-button>
+      </div>
+      </div>

@@ -1,0 +1,29 @@
+<md-dialog aria-label="asignar estudiante" id="formAsignarE">
+    <form ng-cloak name="formAsignarE">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>Asignar estudiante</h2>
+          <span flex></span>
+        </div>
+      </md-toolbar>
+<md-dialog-content>
+<md-input-container>
+     <label>Escoger estudiante</label>
+     <md-select  name="estudiantes" ng-model="estudianteSeleccionado" required>
+       <md-option><em>Escoger</em></md-option>
+       <md-option placeholder="escoger" ng-value="estud.cedula" ng-repeat="estud in estudiantes track by estud.cedula">
+                     {{estud.nombre}}
+        </md-option>
+     </md-select>
+     <div class="errors" ng-messages="formAsignarE.estud.$error">
+       <div ng-message="required">Requerido</div>
+     </div>
+   </md-input-container>
+</md-dialog-content>
+      <md-dialog-actions layout="row">
+        <md-button ng-click="saveEstdAsignado()">
+          Guardar
+        </md-button>
+      </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,57 @@
+<md-dialog aria-label="Iniciar proyecto">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Iniciar proyecto</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div id="contenedorInicioP">
+      <div layout="row">
+        <md-input-container flex="50">
+          <label>Fecha inicio</label>
+          <md-datepicker ng-model="fechaI" name="fechaI" ></md-datepicker>
+
+          <div ng-messages="formProyectos.fechaI.$error">
+            <div ng-message="valid"></div>
+            <div ng-message="required">This date is required!</div>
+            <div ng-message="mindate">Date is too early!</div>
+            <div ng-message="maxdate">Date is too late!</div>
+          </div>
+        </md-input-container>
+        <md-input-container flex="50">
+          <label>Fecha estimada cierre</label>
+          <md-datepicker  ng-model="fechaF" name="fechaF" ></md-datepicker>
+
+          <div ng-messages="formProyectos.fechaF.$error">
+            <div ng-message="valid"></div>
+            <div ng-message="required">This date is required!</div>
+            <div ng-message="mindate">Date is too early!</div>
+            <div ng-message="maxdate">Date is too late!</div>
+          </div>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex>
+          <label>Avance</label>
+          <md-select ng-model="avanceP" name="avanceP">
+
+            <md-option><em>Escoger</em></md-option>
+            <md-option placeholder="escoger" ng-value="avance" ng-repeat="avance in opcionesAvance track by $index">
+                          {{avance}}
+             </md-option>
+
+          </md-select>
+        </md-input-container>
+      </div>
+    </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button ng-click="guardarAvance()">
+        Guardar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

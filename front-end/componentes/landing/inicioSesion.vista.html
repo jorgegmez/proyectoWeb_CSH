@@ -1,0 +1,45 @@
+<md-dialog>
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Iniciar sesión</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content id="contenedorIniciarSesion">
+      <form name="formularioInicio">
+        <div layout="row">
+          <md-input-container>
+            <label>Correo</label>
+            <input name="correo" ng-model="inicioCtrl.correo" required>
+            <div ng-messages="formularioInicio.correo.$error">
+              <div ng-message="required">Este es un campo requerido!</div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout="row">
+          <md-input-container>
+            <label>Contrasenna</label>
+            <input type="password" name="contrasenna" ng-model="inicioCtrl.Contrasenna" required>
+            <div ng-messages="formularioInicio.contrasenna.$error">
+              <div ng-message="required">Este es un campo requerido!</div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout="row">
+          <md-button class="btn" ng-click="iniciarSesion(inicioCtrl.correo, inicioCtrl.Contrasenna)">
+            Iniciar sesión
+          </md-button>
+        </div>
+
+        <div class="error">
+          <output id="mensajeInicio"></output>
+        </div>
+      </form>
+
+    </md-dialog-content>
+  </form>
+</md-dialog>

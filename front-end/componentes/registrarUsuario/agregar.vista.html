@@ -1,0 +1,419 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="registroCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon ng-click="redirectPerfil($event)" icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+                      md-disable-backdrop md-whiteframe="4">
+              <md-content layout-margin class="aside">
+                <md-button ng-click="registroCtrl.toggleLeft()" class="pull-right">
+                  <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+                </md-button>
+              </md-content>
+              <md-content layout-margin class="aside">
+                <a ui-sref="proyectos">Proyectos</a>
+              </md-content>
+              <md-content layout-margin class="aside">
+                <a ui-sref="solicitudesPortulantes">Solicitudes</a>
+              </md-content>
+              <md-content layout-margin class="aside">
+                <a ui-sref="agregarUsuarios">Usuarios</a>
+              </md-content>
+              <md-content layout-margin class="aside">
+                <a ui-sref="carreras">Carreras</a>
+              </md-content>
+              <md-content layout-margin class="aside">
+                <a ui-sref="industrias">Industrias</a>
+              </md-content>
+              <md-content layout-margin class="aside">
+               <a ui-sref="reportes">Reportes</a>
+              </md-content>
+              <md-button ng-click="registroCtrl.cerrarSesion()">
+                <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+              </md-button>
+          </md-sidenav>
+        </section>
+      </div>
+
+      <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        <h2>Registro de usuarios</h2>
+        <p>Selecione el usuario que desea registrar</p>
+        <div class="row">
+          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+            <div ng-cloak>
+              <md-content>
+                <md-tabs md-dynamic-height md-border-bottom>
+                  <md-tab label="Estudiante">
+                    <md-content class="md-padding">
+                      <div class="container" id="contenidoUsu">
+                        <div class="barra-inicial">
+                          <h2>Nuevo estudiante</h2>
+                        </div>
+                      <form name="formularioRegistroEstudiante" id="formEstu">
+                        <div>
+                          <p>Datos requeridos para registrar a un estudiante</p>
+                        </div>
+                        <md-input-container class="md-block">
+                          <div>
+                            <label>Nombre</label>
+                            <input name="nombre" ng-model="registroCtrl.nombreEstudiante" required>
+                            <div ng-messages="formularioRegistroEstudiante.nombre.$error">
+                              <div ng-message="required">Este es un campo requerido!</div>
+                            </div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                          <div>
+                            <label>Apellidos</label>
+                            <input name="apellidos" ng-model="registroCtrl.apellidosEstudiante" required>
+                            <div ng-messages="formularioRegistroEstudiante.apellidos.$error">
+                              <div ng-message="required">Este es un campo requerido!</div>
+                            </div>
+                          </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                          <label>Cédula</label>
+                          <input name="cedula" ng-model="registroCtrl.cedulaEstudiante" required>
+                          <div ng-messages="formularioRegistroEstudiante.cedula.$error">
+                            <div ng-message="required">Este es un campo requerido!</div>
+                          </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex="50">
+                      <label>Carrera</label>
+                          <md-select name="carrera" ng-model="registroCtrl.carreraEstudiante" required>
+                            <md-option ng-repeat="carrera in registroCtrl.carrera" ng-value="carrera.nombre">{{carrera.nombre}}</md-option>
+                          </md-select>
+                          <div class="errors" ng-messages="formSolicitud.carrera.$error">
+                            <div ng-message="required">Requerido</div>
+                          </div>
+                          </md-input-container>
+
+                        <md-input-container class="md-block">
+                          <label>Correo de la universidad</label>
+                          <input name="correo" ng-model="registroCtrl.correoEstudiante" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
+                          <div ng-messages="formularioRegistroEstudiante.correo.$error" role="alert">
+                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                              Este es un campo requerido!
+                            </div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                          <label>Contraseña</label>
+                          <input type="password" name="contrasenna" ng-model="registroCtrl.contrasennaEstudiante" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/" required>
+                          <div ng-messages="formularioRegistroEstudiante.contrasenna.$error" role="alert">
+                            <div ng-message-exp="['required', 'pattern']">
+                              La contraseña debe tener al menos una mayúscula, una minúscula, un número y un caracter especial.
+                            </div>
+                          </div>
+                        </md-input-container>
+
+                        <div layout="row" class="pull-right">
+                          <md-button id="btnRegistrar" ng-disabled="formularioRegistroEstudiante.$invalid" ng-click="registroCtrl.registrarEstudiante(registroCtrl.cedulaEstudiante)">
+                            Registrar usuario
+                          </md-button>
+                        </div>
+
+                        <div class="error">
+                          <output id="mensajeError3" class="errorFont"></output>
+                        </div>
+                      </form>
+                    </div>
+                    </md-content>
+                  </md-tab>
+                  <md-tab label="Profesor">
+                    <md-content class="md-padding">
+                      <div class="container" id="contenidoUsu">
+                        <div class="barra-inicial">
+                          <h2>Nuevo profesor</h2>
+                        </div>
+                      <div class="row">
+                        <form name="formularioRegistroProfesor" id="formProfesor">
+                          <div>
+                            <p>Datos requeridos para registrar a un profesor</p>
+                          </div>
+                          <md-input-container class="md-block">
+                            <div>
+                              <label>Nombre</label>
+                              <input name="nombre" ng-model="registroCtrl.nombreProfesor" required>
+                              <div ng-messages="formularioRegistroProfesor.nombre.$error">
+                                <div ng-message="required">Este es un campo requerido!</div>
+                              </div>
+                            </div>
+                          </md-input-container>
+                          <md-input-container class="md-block">
+                            <div>
+                              <label>Apellidos</label>
+                              <input name="apellidos" ng-model="registroCtrl.apellidosProfesor" required>
+                              <div ng-messages="formularioRegistroProfesor.apellidos.$error">
+                                <div ng-message="required">Este es un campo requerido!</div>
+                              </div>
+                            </div>
+                          </md-input-container>
+                          <md-input-container class="md-block">
+                            <label>Cédula</label>
+                            <input name="cedula" ng-model="registroCtrl.cedulaProfesor" required>
+                            <div ng-messages="formularioRegistroProfesor.cedula.$error">
+                              <div ng-message="required">Este es un campo requerido!</div>
+                            </div>
+                          </md-input-container>
+                          <md-input-container class="md-block">
+                            <label>Puesto</label>
+                            <input name="puesto" ng-model="registroCtrl.puestoProfesor" required>
+                            <div ng-messages="formularioRegistroProfesor.puesto.$error">
+                              <div ng-message="required">Este es un campo requerido!</div>
+                            </div>
+                          </md-input-container>
+                          <div layout="row">
+                            <md-input-container flex="50">
+                              <label>Profesión</label>
+                              <input name="profesion" ng-model="registroCtrl.profesionProfesor" required>
+                              <div ng-messages="formularioRegistroProfesor.profesion.$error">
+                                <div ng-message="required">Este es un campo requerido!</div>
+                              </div>
+                            </md-input-container>
+                            <md-input-container flex="50">
+                              <label>Grado académico</label>
+                              <md-select name="grado" ng-model="registroCtrl.gradoProfesor" required>
+                                <md-option value="Técnico">Técnico</md-option>
+                                <md-option value="Diplomado">Diplomado</md-option>
+                                <md-option value="Bachillerato">Bachillerato</md-option>
+                                <md-option value="Maestría">Maestría</md-option>
+                                 </md-select>
+                              <div ng-messages="formularioRegistroProfesor.grado.$error">
+                                <div ng-message="required">Este es un campo requerido!</div>
+                              </div>
+                            </md-input-container>
+                          </div>
+                          <md-input-container class="md-block">
+                            <label>Correo</label>
+                            <input name="correo" ng-model="registroCtrl.correoProfesor" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
+                            <div ng-messages="formularioRegistroProfesor.correo.$error" role="alert">
+                              <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                Este es un campo requerido!
+                              </div>
+                            </div>
+                          </md-input-container>
+
+                          <md-input-container class="md-block">
+                            <label>Contraseña</label>
+                            <input type="password" name="contrasenna" ng-model="registroCtrl.contrasennaProfesor"  ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/" required>
+                            <div ng-messages="formularioRegistroProfesor.contrasenna.$error" role="alert">
+                              <div ng-message-exp="['required', 'pattern']">
+                                La contraseña debe tener al menos una mayúscula, una minúscula, un número y un caracter especial.
+                              </div>
+                            </div>
+                          </md-input-container>
+
+                          <div layout="row"  class="pull-right">
+                            <md-button id="btnRegistrar" ng-disabled="formularioRegistroProfesor.$invalid" ng-click="registroCtrl.registrarProfesor(registroCtrl.correoProfesor)">
+                              Registrar usuario
+                            </md-button>
+                          </div>
+
+                          <div class="error">
+                            <output id="mensajeError2" class="errorFont"></output>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    </md-content>
+                  </md-tab>
+                  <md-tab label="Concejo">
+                    <md-content class="md-padding">
+                      <div class="container" id="contenidoUsu">
+                        <div class="barra-inicial">
+                          <h2>Nuevo miembro de concejo</h2>
+                        </div>
+                      <div class="row">
+                        <form name="formularioRegistro" id="formConsejo">
+                          <div>
+                            <p>Datos requeridos para registrar a un miembro del concejo</p>
+                          </div>
+                          <md-input-container class="md-block">
+                            <div>
+                              <label>Nombre</label>
+                              <input name="nombre" ng-model="registroCtrl.nombreConsejo" required>
+                              <div ng-messages="formularioRegistro.nombre.$error">
+                                <div ng-message="required">Este es un campo requerido!</div>
+                              </div>
+                            </div>
+                          </md-input-container>
+
+                          <md-input-container class="md-block">
+                            <label>Cédula</label>
+                            <input name="cedula" ng-model="registroCtrl.cedulaConsejo" required>
+                            <div ng-messages="formularioRegistro.cedula.$error">
+                              <div ng-message="required">Este es un campo requerido!</div>
+                            </div>
+                          </md-input-container>
+
+                          <md-input-container class="md-block">
+                            <label>Puesto</label>
+                            <input name="puesto" ng-model="registroCtrl.puestoConsejo" required>
+                            <div ng-messages="formularioRegistro.puesto.$error">
+                              <div ng-message="required">Este es un campo requerido!</div>
+                            </div>
+                          </md-input-container>
+                          <div layout="row">
+                          <md-input-container flex="50">
+                            <label>Profesión</label>
+                            <input name="profesion" ng-model="registroCtrl.profesionConsejo" required>
+                            <div ng-messages="formularioRegistro.profesion.$error">
+                              <div ng-message="required">Este es un campo requerido!</div>
+                            </div>
+                          </md-input-container>
+                          <md-input-container flex="50">
+                            <label>Grado académico</label>
+                            <md-select name="grado" ng-model="registroCtrl.gradoConsejo" required>
+                              <md-option value="Técnico">Técnico</md-option>
+                              <md-option value="Diplomado">Diplomado</md-option>
+                              <md-option value="Bachillerato">Bachillerato</md-option>
+                              <md-option value="Maestría">Maestría</md-option>
+                               </md-select>
+                            <div ng-messages="formularioRegistro.grado.$error">
+                              <div ng-message="required">Este es un campo requerido!</div>
+                            </div>
+                          </md-input-container>
+                        </div>
+                          <md-input-container class="md-block">
+                            <label>Correo</label>
+                            <input name="correo" ng-model="registroCtrl.correoConsejo" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
+                            <div ng-messages="formularioRegistro.correo.$error" role="alert">
+                              <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                Este es un campo requerido!
+                              </div>
+                            </div>
+                          </md-input-container>
+
+                          <md-input-container class="md-block">
+                            <label>Contraseña</label>
+                            <input type="password" name="contrasenna" ng-model="registroCtrl.contrasennaConsejo"  ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/"  required>
+                            <div ng-messages="formularioRegistro.contrasenna.$error" role="alert">
+                              <div ng-message-exp="['required', 'pattern']">
+                                La contraseña debe tener al menos una mayúscula, una minúscula, un número y un caracter especial.
+                              </div>
+                            </div>
+                          </md-input-container>
+
+                          <div layout="row" class="pull-right">
+                            <md-button id="btnRegistrar" ng-disabled="formularioRegistro.$invalid" ng-click="registroCtrl.registrarConsejo(registroCtrl.cedulaConsejo)">
+                              Registrar usuario
+                            </md-button>
+                          </div>
+
+                          <div class="error">
+                            <output id="mensajeError4" class="errorFont"></output>
+                          </div>
+
+                        </form>
+                      </div>
+                    </div>
+                    </md-content>
+                  </md-tab>
+                    <md-tab label="Asistente">
+                      <md-content class="md-padding">
+                      <div class="container" id="contenidoUsu">
+                        <div class="barra-inicial">
+                          <h2>Nuevo asistente</h2>
+                        </div>
+                        <form name="formularioRegistroAsistente" id="formAsistente">
+                          <div >
+                            <p>Datos requeridos para registrar al asistente</p>
+                          </div>
+                          <md-input-container class="md-block">
+                            <div>
+                              <label>Nombre</label>
+                              <input name="nombre" ng-model="registroCtrl.nombreAsistente" required>
+                              <div ng-messages="formularioRegistroAsistente.nombre.$error">
+                                <div ng-message="required">Este es un campo requerido!</div>
+                              </div>
+                            </div>
+                          </md-input-container>
+
+                          <md-input-container class="md-block">
+                            <label>Cédula</label>
+                            <input name="cedula" ng-model="registroCtrl.cedulaAsistente" required>
+                            <div ng-messages="formularioRegistroAsistente.cedula.$error">
+                              <div ng-message="required">Este es un campo requerido!</div>
+                            </div>
+                          </md-input-container>
+                          <md-input-container class="md-block" flex="50">
+                        <label>Carrera</label>
+                            <md-select name="carrera" ng-model="registroCtrl.carreraAsistente" required>
+                              <md-option ng-repeat="carrera in registroCtrl.carrera" ng-value="carrera.nombre">{{carrera.nombre}}</md-option>
+                            </md-select>
+                            <div class="errors" ng-messages="formSolicitud.carrera.$error">
+                              <div ng-message="required">Requerido</div>
+                            </div>
+                            </md-input-container>
+
+                          <md-input-container class="md-block">
+                            <label>Correo de la universidad</label>
+                            <input name="correo" ng-model="registroCtrl.correoAsistente" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
+
+                            <div ng-messages="formularioRegistroAsistente.correo.$error" role="alert">
+                              <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                Este es un campo requerido!
+                              </div>
+                            </div>
+                          </md-input-container>
+
+                          <md-input-container class="md-block">
+                            <label>Contraseña</label>
+                            <input type="password" name="contrasenna" ng-model="registroCtrl.contrasennaAsistente" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/" required>
+                            <div ng-messages="formularioRegistroAsistente.contrasenna.$error" role="alert">
+                              <div ng-message-exp="['required', 'pattern']">
+                                La contraseña debe tener al menos una mayúscula, una minúscula, un número y un caracter especial.
+                              </div>
+                            </div>
+                          </md-input-container>
+                          <div layout="row" class="pull-right">
+                            <md-button id="btnRegistrar" ng-disabled="formularioRegistroAsistente.$invalid" ng-click="registroCtrl.registrarAsistente(registroCtrl.cedulaAsistente)">
+                              Registrar usuario
+                            </md-button>
+                          </div>
+
+                          <div class="error">
+                            <output id="mensajeError" class="errorFont"></output>
+                          </div>
+                        </form>
+                      </div>
+                      </md-content>
+                    </md-tab>
+                </md-tabs>
+              </md-content>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <md-button id="btnListasU" class="col-md-2 offset3" ng-click='redirectListaU()'>
+            Ver listas
+        </md-button>
+        <md-button id="btnListasU" class="col-md-2 offset3" ng-click='redirectEliminarU()'>
+            Eliminar Usuarios
+        </md-button>
+      </div>
+
+    </div>
+  </div>
+</div>

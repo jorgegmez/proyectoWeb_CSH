@@ -1,0 +1,218 @@
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Menú</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand pull-left" href="http://www.cenfotecsoftwarehouse.com"><img src="img/logo-icono.png" width="50px"></a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right navegador">
+          <ul class="nav navbar-nav">
+            <li class="pull-right">
+              <md-button id="btn_iniciar_sesion" ng-click="showAdvanced($event)">
+                Iniciar sesión
+              </md-button>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div id="headerwrap">
+	    <div class="container">
+			<div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-xs-12 himg">
+					<img src="img/logo-color.png" width="60%" class="img-responsive center-block">
+				</div>
+				<div class="col-lg-12  col-xs-12 text-center">
+					<h4>Cenfotec Software House es un proyecto de emprendimiento académico y profesional dentro de la Universidad Cenfotec, donde los estudiantes de la Universidad brindan servicios a la comunidad, asesorados por profesores expertos en diferentes áreas, con precios muy asequibles.</h4>
+				</div>
+        <div class="col-lg-8 col-lg-offset-2 col-xs-12 text-center" id="rastrear" ng-controller="rastrearControlador">
+          <md-button id="search" aria-label="buscar"ng-click="mostrarEstado($event, codigosCtrl.codigo)">
+          <ng-md-icon icon="search" style="fill:#ffffff;" size="20"></ng-md-icon>
+          </md-button>
+					<input id="buscar" type="search" placeholder="rastrear solicitud" ng-model="codigosCtrl.codigo"></input>
+				</div>
+			</div>
+	    </div>
+	</div>
+
+	 <div id="servicios">
+	 	<div class="container">
+ 			<div class="row centered" id="servicios">
+        <div class="col-md-12 col-xs-12">
+          <h3>Servicios</h3>
+        </div>
+ 				<div class="col-md-6 contenedor_izquierdo">
+          <div class="col-md-12 col-xs-12 cajas">
+            <p class="texto"> Desarrollo y diseño de prototipos</p>
+   				</div>
+          <div class="col-md-12 cajas">
+            <p class="texto">Desarrollo y diseño web</p>
+          </div>
+          <div class="col-md-12 cajas">
+            <p class="texto">Desarrollo de apps</p>
+          </div>
+          <div class="col-md-12 cajas">
+            <p class="texto">Desarrollo de aplicaciones</p>
+          </div>
+ 				</div>
+ 				<div class="col-md-6 contenedor_derecho">
+          <div class="col-md-12 cajas col-xs-12">
+            <p class="texto">Pruebas de calidad de software</p>
+   				</div>
+          <div class="col-md-12 cajas">
+            <p class="texto">Confeccion de requerimientos</p>
+          </div>
+          <div class="col-md-12 cajas">
+            <p class="texto">Diseño de bases de datos</p>
+          </div>
+          <div class="col-md-12 cajas">
+            <p class="texto">Apoyo en proyectos de emprendimiento con nuestro aliado, el Programa Semilla</p>
+          </div>
+ 				</div>
+	 		</div>
+	 	</div>
+	 </div>
+
+	 <div id="portfoliowrap">
+    <h3>Portafolio</h3>
+    <div class="portfolio-centered">
+      <div class="recentitems portfolio">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="img/porta1.jpg" alt="Proyecto FIS Digital">
+            <div class="carousel-caption">
+              <h2>FIS Digital</h2>
+              <p>El proyecto FIS Digital se realizó para el Instituto Mixto de Ayuda Social, y consistió en la digitalización de la ficha de información social (FIS) en una aplicación móvil para sistema operativo Android.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="img/porta2.jpg" alt="Proyecto Proyecto Semilla">
+            <div class="carousel-caption">
+              <h2>Proyecto Semilla</h2>
+              <p>El portal informativo se realiza para el Proyecto Semilla, y consiste en es un sitio web interactivo, desarrollado con el fin de que los clientes o posibles interesados en proyectos de emprendedurismo puedan encontrar una guía rápida sobre cómo iniciar su empresa, o llevar a cabo una idea.</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="img/porta3.jpg" alt="Proyecto Proyecto Nissan">
+            <div class="carousel-caption">
+              <h2>Proyecto Nissan.</h2>
+              <p>Somos responsables del diseño, calidad, desarrollo de su sitio web y de la experiencia movil.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+    </div>
+	 </div>
+   <div id="aplicar">
+	 	<div class="container">
+ 			<div class="row">
+        <div class="col-md-12 col-xs-12">
+          <h3 class="text-center">¿Cómo aplicar?</h3>
+        </div>
+ 				<div id="aplicar" class="col-md-6 col-xs-12">
+          <h4>Cliente</h4>
+          <p>Solicitar el servicio llenando el formulario. Esta solicitud será evaluada por el comité director del Cenfotec Software House.</p>
+          <p>El Cenfotec Software House concertará una cita entre el solicitante y el equipo de expertos, para analizar la solicitud.</p>
+          <p>El comité director del Cenfotec Software House estudia la factibilidad técnica, operativa y académica de participar en proyecto.</p>
+          <p>Si el proyecto es factible, se envía al cliente una oferta económica.</p>
+          <p>Una vez que el cliente acepta las condiciones, se procede a la firma del contrato y a la conformación del equipo del proyecto, e inicia el proyecto.</p>
+          <p>Finalmente, el equipo del proyecto entrega, en el tiempo acordado y según lo pactado, el producto final.</p>
+ 				</div>
+ 				<div id="aplicar" class="col-md-6 col-xs-12">
+          <h4>Estudiante</h4>
+          <p>Solicitar el ingreso llenando el formulario. Esta solicitud será evaluada por el encargado del Cenfotec Software House.</p>
+          <p>El Cenfotec Software House concertará una cita entre el solicitante y el equipo de expertos, para analizar la solicitud.</p>
+          <p>El estudiante recibirá una notificación de aceptación o rechazo según sea el caso, con su debida explicación</p>
+ 				</div>
+	 		</div>
+	 	</div>
+	 </div>
+   <div class="container centered">
+	 	<div class="row" id="formulario">
+      <div class="col-md-12 col-sx-12 text-center" id="form">
+        <ng-md-icon icon="assignment" style="fill:#2E2E2D;" size="50"></ng-md-icon>
+        <h3>Formularios</h3>
+        <p>Por favor llene el formulario</p>
+      </div>
+      <div class="col-md-12 col-xs-12" id="formularios_client_est">
+      <div ng-controller="formuControlador"><!--*ng-controller=""-->
+      <md-container class="col-md-5 col-xs-12">
+        <md-button id="cliente" ng-click="showDialogCliente($event)">
+          Cliente
+        </md-button>
+      </md-container>
+      <md-container class="col-md-7 col-xs-12">
+        <md-button id="estudiante" ng-click="showDialogEstudiante($event)">
+          Estudiante
+        </md-button>
+      </md-container>
+      </div>
+	 	 </div>
+    </div>
+  </div>
+
+	 <div class="container-fluid">
+	 	<div class="row" id="contacto">
+      <div class="col-md-12">
+        <h3 class="text-center" id="tituloContact">Contacto</h3>
+      </div>
+	 		<div class="col-md-4 col-sx-12 centered">
+		 		<a href="https://www.ucenfotec.ac.cr"><img src="img/logo-cenfotec.png" width="100px"></a>
+	 		</div>
+
+	 		<div class="col-md-4 col-sx-12">
+        <md-container>
+          <p>+506 2281 1515</p>
+        </md-container>
+        <md-container >
+          <p>softwarehouse@ucenfotec.ac.cr</p>
+        </md-container>
+        <md-container >
+          <p>www.ucenfotec.ac.cr</p>
+        </md-container>
+        <md-container >
+          <p>Santa Marta, San Pedro Montes de Oca</p>
+        </md-container>
+	 		</div>
+	 		<div class="col-md-4 col-sx-12 centered">
+	 			<div id="contactIcon" class="row">
+          <a href="https://www.facebook.com/Cenfotec"><ng-md-icon icon="facebook" style="fill:#2E2E2D;" size="30"></ng-md-icon></a>
+        </div>
+        <div id="contactIcon" class="row">
+          <a href="https://twitter.com/UCenfotec"><ng-md-icon icon="twitter" style="fill:#2E2E2D;" size="30"></ng-md-icon></a>
+        </div>
+        <div id="contactIcon" class="row">
+          <a href="https://www.linkedin.com/edu/school?id=187086"><ng-md-icon icon="linkedin" style="fill:#2E2E2D;" size="30"></ng-md-icon></a>
+        </div>
+	 		</div>
+	 	</div>
+	 </div>
+   <footer>
+     <div class="row">
+       <div class="col-md-12 col-xs-12 centered">
+         <a href="http://www.cenfotecsoftwarehouse.com"><img src="img/logo-icono.png" width="40px"></a>
+       </div>
+     </div>
+   </footer>

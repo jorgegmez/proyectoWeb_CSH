@@ -1,0 +1,93 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="estudiantesCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a class="pull-right"><ng-md-icon ng-click="redirectPerfil($event)" icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+                      md-disable-backdrop md-whiteframe="4">
+
+            <md-content layout-margin class="aside">
+              <md-button ng-click="estudiantesCtrl.toggleLeft()" class="pull-right">
+                <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+              </md-button>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="proyectosAsignados">Proyectos</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="bitacora">Bitácora</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="reportes">Reportes</a>
+            </md-content>
+            <md-button ng-click="registroCtrl.cerrarSesion()">
+              <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+            </md-button>
+          </md-sidenav>
+        </section>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <md-input-container>
+            <label>Buscar proyecto</label>
+            <input ng-model="buscarProyect">
+          </md-input-container>
+        </div>
+        <div class="row row_proyetos" ng-repeat="proyectos in proyectAsigEstCtrl.proyectAsignadosEstud | filter:buscarProyect">
+          <div layout="row" class="header_proyecto">
+            <output name="nombreProyecto">{{proyectos.nombreP}}</output>
+          </div>
+          <div class="col-md-4">
+            <output name="nombreEmpresa"><strong>Empresa: </strong> {{proyectos.nombreE}}</output>
+          </div>
+          <div class="col-md-4">
+            <output name="cedula"><strong>Cédula: </strong> {{proyectos.cedulaC}}</output>
+          </div>
+          <div class="col-md-4">
+            <output name="tipoCedula"><strong>Tipo cédula: </strong> {{proyectos.tipoCedulaC}}</output>
+          </div>
+          <div class="col-md-4">
+            <output name="nombreIndustria"><strong>Industria: </strong> {{proyectos.industria}}</output>
+          </div>
+          <div class="col-md-4">
+            <output name="nombreEmail"><strong>Email: </strong> {{proyectos.emailC}}</output>
+          </div>
+          <div class="col-md-4">
+            <output name="nombreTelefono"><strong>Teléfono: </strong> {{proyectos.telefonoC}}</output>
+          </div>
+          <div class="col-md-4">
+            <output name="nombreResponsable"><strong>Responsable: </strong> {{proyectos.nombreC}}</output>
+          </div>
+          <div class="col-md-4">
+            <output name="capital"><strong>Capital: </strong> {{proyectos.capitalC}}</output>
+          </div>
+          <div class="col-md-4">
+            <output name="estado"><strong>Estado: </strong> {{proyectos.estado}}</output>
+          </div>
+          <hr>
+          <hr>
+          <div class="row">
+            <md-button id="btnVerEq" class="col-md-2" ng-click="redirectAsignados(proyecto.nombreP)">
+                Ver equipo
+            </md-button>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,76 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="estudiantesCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a class="pull-right"><ng-md-icon ng-click="redirectPerfil($event)" icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+                      md-disable-backdrop md-whiteframe="4">
+
+            <md-content layout-margin class="aside">
+              <md-button ng-click="estudiantesCtrl.toggleLeft()" class="pull-right">
+                <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+              </md-button>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="proyectosAsignados">Proyectos</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="bitacora">Bitácora</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="reportes">Reportes</a>
+            </md-content>
+            <md-button ng-click="registroCtrl.cerrarSesion()">
+              <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+            </md-button>
+          </md-sidenav>
+        </section>
+      </div>
+
+      <div id="contenidoEst" class="center-block">
+          <h3 class="text-center">¡Bienvenido Adriana!</h3>
+        <div class="barra-inicial">
+          <md-button id="btnEditEst" class="pull-right" ng-click="">
+            Editar
+          </md-button>
+        <h2>Adriana Hernández</h2>
+        </div>
+        <div class="" id="usuarioEst">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="img/estudiante-02.png" width="150px" class="image-responsive center-block">
+                </div>
+                  <div class="col-md-4 usuarioInfo">
+                      <output name="correo" class="correo">Correo: adrianah@ucenfotec.ac.cr</output>
+                      <output name="telefono" class="telefono">Teléfono: 888847293</output>
+                      <output name="cedula" class="cedula">Cédula: 112830681</output>
+                  </div>
+                  <div class="col-md-4 usuarioInfo">
+                    <output name="profesion" class="profesion">Profesión: Diseñador</output>
+                    <output name="puesto" class="puesto">Carrera: Diseño y Desarrollo Web</output>
+                    <output name="titulo" class="titulo">Nivel académico: Técnico</output>
+                  </div>
+            </div>
+        </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>

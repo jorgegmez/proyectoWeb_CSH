@@ -1,0 +1,99 @@
+<md-dialog aria-label="solicitud ingreso">
+    <form ng-cloak name="formSolicitud">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>Solicitud de ingreso</h2>
+          <span flex></span>
+        </div>
+      </md-toolbar>
+
+      <md-dialog-content>
+        <div layout=”row”>
+          <md-input-container flex=”50” >
+            <label>Nombre</label>
+            <input required ng-model="nombre" md-no-asterisk name="nombre">
+            <div ng-messages="formSolicitud.nombre.$error">
+               <div ng-message="required">Espacio requerido.</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex=”50” >
+             <label>Cédula</label>
+              <input required type="text"  name="cedula" ng-model="cedula"  />
+             <div ng-messages="formSolicitud.cedula.$error" ng-pattern="/^[0-9]*$/">
+                <div ng-message="required">Espacio requerido.</div>
+             </div>
+           </md-input-container>
+       </div>
+       <div layout=”row”>
+         <md-input-container flex=”50” >
+            <label>Edad</label>
+             <input required type="text" name="edad" ng-model="edad" />
+            <div ng-messages="formSolicitud.edad.$error" ng-pattern="/^[0-9]*$/">
+               <div ng-message="required">Espacio requerido.</div>
+            </div>
+          </md-input-container>
+         <md-input-container flex="50">
+              <label>Género</label>
+              <md-select name="genero" ng-model="genero" required>
+                <md-option value="Femenino">Femenino</md-option>
+                <md-option value="Masculino">Masculino</md-option>
+                 </md-select>
+              <div class="errors" ng-messages="formSolicitud.genero.$error">
+                <div ng-message="required">Requerido</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout=”row”>
+              <md-input-container class="md-block" flex="50">
+            <label>Carrera</label>
+                <md-select name="carrera" ng-model="carrera" required>
+                  <md-option ng-repeat="carrera in carreras" ng-value="carrera.nombre">{{carrera.nombre}}</md-option>
+                </md-select>
+                <div class="errors" ng-messages="formSolicitud.carrera.$error">
+                  <div ng-message="required">Requerido</div>
+                </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex="50">
+                <label>Correo universidad</label>
+                  <input ng-model="email" required type="email" name="estudianteEmail"
+                             minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                      <div ng-messages="formSolicitud.estudianteEmail.$error" role="alert">
+                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                           Correo inválido, por favor ingrese un correo adecuado.
+                        </div>
+                      </div>
+                </md-input-container>
+          </div>
+          <div layout=”row”>
+            <md-input-container class="md-block" flex="50">
+            <label>Cursos llevados</label>
+             <input required type="text" name="cursos" ng-model="cursos" />
+            <div ng-messages="formSolicitud.cursos.$error">
+               <div ng-message="required">Espacio requerido.</div>
+            </div>
+          </md-input-container>
+            <md-input-container id="uploadF" flex="50">
+              <label>Adjuntar Curriculum</label>
+              <input type="file" name="curriculum" required id="curriculum" ng-model="curriculum">
+            </md-input-container>
+          </div>
+          <div layout=”row”>
+            <md-input-container  id="uploadF" flex="50">
+              <label>Foto</label>
+              <input type="file" name="foto" required id="photo" ng-model="foto">
+            </md-input-container>
+            <md-input-container id="uploadF" flex="50">
+              <label>Adjuntar Portofolio</label>
+              <input type="file" name="portofolio" required id="portofolio" ng-model="portofolio">
+            </md-input-container>
+          </div>
+      </md-dialog-content>
+
+      <md-dialog-actions layout="row">
+
+        <md-button ng-click="saveformEst()">
+          Guardar
+        </md-button>
+      </md-dialog-actions>
+    </form>
+</md-dialog>

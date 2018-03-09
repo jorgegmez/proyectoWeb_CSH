@@ -1,0 +1,110 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="editarCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon ng-click="redirectPerfil($event)" icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" style="height: 100%" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+                      md-disable-backdrop md-whiteframe="4">
+
+            <md-content layout-margin class="aside">
+              <md-button ng-click="editarCtrl.toggleLeft()" class="pull-right">
+                <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+              </md-button>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="proyectos">Proyectos</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="solicitudesPortulantes">Solicitudes</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="agregarUsuarios">Usuarios</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="carreras">Carreras</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="industrias">Industrias</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="reportes">Reportes</a>
+            </md-content>
+            <md-button ng-click="editarCtrl.cerrarSesion()">
+              <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+            </md-button>
+            <output id="usuarioActivo"></output>
+          </md-sidenav>
+        </section>
+      </div>
+      <div class="container" id="contenidoEditPer">
+        <div class="barra-inicial">
+          <h2>Editar perfil</h2>
+        </div>
+        <form name="formularioRegistroAsistente" id="editarPerfil">
+          <md-container>
+            <div>
+              <h5>Información Personal</h5>
+            </div>
+          </md-container>
+          <md-input-container class="md-block">
+            <div>
+              <label>Nombre</label>
+              <input name="nombre" ng-model="editarCtrl.nombreUsuario">
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <div>
+              <label>Apellidos</label>
+              <input name="cedula" ng-model="editarCtrl.apellidosUsuario">
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block" flex="50">
+            <label>Carrera</label>
+              <md-select name="carrera" ng-model="editarCtrl.carreraUsuario">
+                <md-option ng-repeat="carrera in editarCtrl.carrera" ng-value="carrera.nombre">{{carrera.nombre}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <div>
+                <label>Cédula</label>
+                <input name="nombre" ng-model="editarCtrl.cedulaUsuario">
+              </div>
+            </md-input-container>
+          <md-input-container class="md-block">
+            <label>Correo</label>
+            <input name="correo" ng-model="editarCtrl.correoUsuario" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+          </md-input-container>
+          <hr>
+          <md-container>
+            <div>
+              <h5>Modificación de contraseña</h5>
+            </div>
+          </md-container>
+          <md-input-container class="md-block">
+            <label>Contraseña</label>
+            <input type="password" name="contrasenna" ng-model="editarCtrl.contrasennaUsuario" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/">
+          </md-input-container>
+          <div class="row pull-right">
+            <md-button aria-label="boton registrar" ng-click="editarCtrl.modificarDatos()" id="btnGuardar">
+              Guardar cambios
+            </md-button>
+          </div>
+        </form>
+      </div>

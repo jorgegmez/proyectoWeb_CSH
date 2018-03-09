@@ -1,0 +1,29 @@
+<md-dialog aria-label="asignar profesor" id="formAsignarP">
+    <form ng-cloak name="formAsignarP">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>Asignar profesor</h2>
+          <span flex></span>
+        </div>
+      </md-toolbar>
+<md-dialog-content>
+<md-input-container>
+     <label>Escoger Profesor</label>
+     <md-select name="profesores" ng-model="profesorSeleccionado" required>
+       <md-option><em>Escoger</em></md-option>
+       <md-option placeholder="escoger" ng-value="prof.cedula" ng-repeat="prof in profesores track by $index">
+                     {{prof.nombre}}
+        </md-option>
+     </md-select>
+     <div class="errors" ng-messages="formAsignarP.prof.$error">
+       <div ng-message="required">Requerido</div>
+     </div>
+   </md-input-container>
+</md-dialog-content>
+      <md-dialog-actions layout="row">
+        <md-button ng-click="saveProfeAsignado()">
+          Guardar
+        </md-button>
+      </md-dialog-actions>
+    </form>
+</md-dialog>

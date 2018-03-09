@@ -1,0 +1,105 @@
+<md-dialog aria-label="solicitud proyecto" id="formCliente">
+    <form ng-cloak name="formSolicitudC">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>Solicitud de proyecto</h2>
+          <span flex></span>
+        </div>
+      </md-toolbar>
+
+      <md-dialog-content class="formulario">
+        <div layout=”row”>
+          <md-input-container flex=”50” >
+            <label>Nombre empresa</label>
+            <input required ng-model="nombreE" md-no-asterisk name="nombreE">
+            <div ng-messages="formSolicitudC.nombreE.$error">
+               <div ng-message="required">Espacio requerido.</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex=”50” >
+            <label>Nombre proyecto</label>
+            <input required ng-model="nombreP" md-no-asterisk name="nombreP">
+            <div ng-messages="formSolicitudC.nombreP.$error">
+               <div ng-message="required">Espacio requerido.</div>
+            </div>
+          </md-input-container>
+       </div>
+       <div layout=”row”>
+         <md-input-container flex=”50” >
+           <label>Nombre responsable</label>
+           <input required ng-model="nombreC" md-no-asterisk name="nombreC">
+           <div ng-messages="formSolicitudC.nombreC.$error">
+              <div ng-message="required">Espacio requerido.</div>
+           </div>
+         </md-input-container>
+         <md-input-container flex="50">
+              <label>Tipo industria</label>
+              <md-select name="industria" ng-model="tipoIndustria" required>
+                <md-option><em>Escoger</em></md-option>
+                <md-option placeholder="escoger" ng-repeat="industria in industrias">
+                              {{industria.tipo}}
+                  </md-option>
+              </md-select>
+              <div class="errors" ng-messages="formSolicitudC.industria.$error">
+                <div ng-message="required">Requerido</div>
+              </div>
+            </md-input-container>
+
+          </div>
+          <div layout=”row”>
+            <md-input-container class="md-block" flex="50">
+            <label>Correo electrónico</label>
+              <input ng-model="emailC" required type="email" name="emailC"
+                         minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                  <div ng-messages="formSolicitudC.emailC.$error" role="alert">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                       Correo inválido, por favor ingrese un correo adecuado.
+                    </div>
+                  </div>
+            </md-input-container>
+
+           <md-input-container flex=”50” >
+            <label>Teléfono</label>
+             <input required type="text" name="telefonoC" ng-model="telefonoC" md-maxlength="8" />
+            <div ng-messages="formSolicitudC.telefonoC.$error">
+               <div ng-message="required">Espacio requerido.</div>
+            </div>
+          </md-input-container>
+          </div>
+          <div layout=”row”>
+            <md-input-container flex=”50” >
+             <label>Cédula</label>
+              <input type="text" required name="cedulaC" ng-model="cedulaC" />
+              <div ng-messages="formSolicitudC.cedulaC.$error">
+                 <div ng-message="required">Espacio requerido.</div>
+              </div>
+           </md-input-container>
+          </div>
+          <div layout=”row”>
+            <md-input-container flex="50" >
+              <p>Tipo cédula: <span class="radioValue">{{ data.group1 }}</span> </p>
+              <md-radio-group ng-model="tipoCedulaC" required>
+                <md-radio-button value="física" class="md-primary">Física</md-radio-button>
+                <md-radio-button value="jurídica"> Jurídica </md-radio-button>
+              </md-radio-group>
+            </md-input-container>
+            <md-input-container flex="50" >
+              <p>¿Cuenta con capital?: <span class="radioValue">{{ data.group1 }}</span> </p>
+              <md-radio-group ng-model="capitalC" required>
+                <md-radio-button value="si" class="md-primary">Sí</md-radio-button>
+                <md-radio-button value="no">No</md-radio-button>
+              </md-radio-group>
+            </md-input-container>
+            <md-input-container id="uploadF" flex="50">
+              <label>Adjuntar Resumen</label>
+              <input type="file" name="resumenC" required id="resumen" ng-model="resumenC">
+            </md-input-container>
+          </div>
+      </md-dialog-content>
+      <md-dialog-actions layout="row">
+        <md-button ng-click="saveCli()">
+          Guardar
+        </md-button>
+      </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,269 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorNavMobile">
+      <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
+        <img src="img/Cenfotec-Software-House-Logo.png" alt="Cenfotec Software House logo" width="30px"height="30px">
+      </div>
+
+      <div class="col-md-10 col-lg-10 col-xs-10 col-sm-10 pull-right">
+        <a href="" class="pull-right"><ng-md-icon icon="reorder" style="fill: #fff" size="24px" ng-click="listarUCtrl.toggleLeft()" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon ng-click="redirectPerfil($event)" icon="account_circle" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+        <a href="" class="pull-right"><ng-md-icon icon="notifications" style="fill: #f8c400" size="24px" class="md-raised"></ng-md-icon></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="contenedorPrincipal">
+      <div layout="column" class="sideNavStyle" ng-cloak>
+
+        <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left aside" md-component-id="left"
+                      md-disable-backdrop md-whiteframe="4">
+
+            <md-content layout-margin class="aside">
+              <md-button ng-click="listarUCtrl.toggleLeft()" class="pull-right">
+                <ng-md-icon icon="keyboard_backspace" style="fill: #212121" size="38px"></ng-md-icon>
+              </md-button>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="proyectos">Proyectos</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="solicitudesPortulantes">Solicitudes</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="agregarUsuarios">Usuarios</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="carreras">Carreras</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="industrias">Industrias</a>
+            </md-content>
+            <md-content layout-margin class="aside">
+              <a ui-sref="reportes">Reportes</a>
+            </md-content>
+            <md-button ng-click="listarUCtrl.cerrarSesion()">
+              <ng-md-icon icon="power_settings_new" style="fill: #212121" size="38px"></ng-md-icon>
+            </md-button>
+          </md-sidenav>
+        </section>
+      </div>
+    </div>
+  </div>
+
+
+<div ng-controller="listarUsuariosControlador">
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Estudiantes">
+        <md-content class="md-padding">
+        <div class="container" id="contenidoListU">
+            <div class="barra-inicialListU">
+              <div layout="row"  class="pull-right">
+
+                </div>
+                <div layout="row">
+                  <h2>Estudiantes registrados</h2>
+                </div>
+            </div>
+              <div class="row encabezadoListU">
+                <div class="col-md-3">
+                  <h5>Nombre</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Apellidos</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Correo</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Cédula</h5>
+                </div>
+
+            </div>
+          <div class="pre-scrollable " id="listaUsu">
+            <div id="divisor" ng-repeat='estudiante in listarUCtrl.listaUsuarios | filter:{rol:"estudiante"}'>
+              <div class="row">
+                <div class="col-md-3 col-xs-6">
+                  <output name="cedulaC" class="nombreEst">{{estudiante.nombre}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="correoEst">{{estudiante.apellidos}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="correoEst">{{estudiante.correo}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="correoEst">{{estudiante.cedula}}</output>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Profesores">
+        <md-content class="md-padding">
+        <div class="container" id="contenidoListU">
+            <div class="barra-inicialListU">
+              <div layout="row"  class="pull-right">
+                <md-input-container>
+                  <label>Buscar profesor</label>
+                    <input ng-model="buscarProf">
+                  </md-input-container>
+                </div>
+                <div layout="row">
+                  <h2>Profesores registrados</h2>
+                </div>
+            </div>
+              <div class="row encabezadoListU">
+                <div class="col-md-3">
+                  <h5>Nombre</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Apellido</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Puesto</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Correo</h5>
+                </div>
+              </div>
+
+          <div class="pre-scrollable " id="listaUsu">
+            <div id="divisor" ng-repeat='profesor in listarUCtrl.listaUsuarios | filter:{rol:"profesor"}'>
+              <div class="row">
+                <div class="col-md-3 col-xs-6">
+                  <output name="cedulaC" class="nombreProf">{{profesor.nombre}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="correoProf">{{profesor.apellidos}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="correoProf">{{profesor.puesto}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="correoProf">{{profesor.correo}}</output>
+                </div>
+
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Consejo">
+        <md-content class="md-padding">
+        <div class="container" id="contenidoListU">
+            <div class="barra-inicialListU">
+              <div layout="row"  class="pull-right">
+                <md-input-container>
+                  <label>Buscar miembro</label>
+                    <input ng-model="buscarCons">
+                  </md-input-container>
+                </div>
+                <div layout="row">
+                  <h2>Miembros de consejo registrados</h2>
+                </div>
+            </div>
+              <div class="row encabezadoListU">
+                <div class="col-md-3">
+                  <h5>Nombre</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Correo</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Puesto</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Cédula</h5>
+                </div>
+              </div>
+
+          <div class="pre-scrollable " id="listaUsu">
+            <div id="divisor" ng-repeat='concejal in listarUCtrl.listaUsuarios | filter:{rol:"concejo"}'>
+              <div class="row">
+                <div class="col-md-3 col-xs-6">
+                  <output name="cedulaC" class="nombreProf">{{concejal.nombre}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="correoProf">{{concejal.correo}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="puestoProf">{{concejal.puesto}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="correoProf">{{concejal.cedula}}</output>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Asistente">
+
+        <md-content class="md-padding">
+        <div class="container" id="contenidoListU">
+            <div class="barra-inicialListU">
+              <div layout="row"  class="pull-right">
+                <md-input-container>
+                  <label>Buscar asistente</label>
+                    <input ng-model="buscarAsis">
+                  </md-input-container>
+                </div>
+                <div layout="row">
+                  <h2>Asistentes registrados</h2>
+                </div>
+              </div>
+              <div class="row encabezadoListU">
+                <div class="col-md-3">
+                  <h5>Nombre</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Carrera</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Correo</h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Cédula</h5>
+                </div>
+              </div>
+
+          <div class="pre-scrollable " id="listaUsu">
+            <div id="divisor" ng-repeat='asistente in listarUCtrl.listaUsuarios | filter:{rol:"asistente"}'>
+              <div class="row">
+                <div class="col-md-3 col-xs-6">
+                  <output name="cedulaC" class="nombreAsis">{{asistente.nombre}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="carreraAsis">{{asistente.carrera}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="correoAsis">{{asistente.correo}}</output>
+                </div>
+                <div class="col-md-3 col-xs-6">
+                  <output name="nombreE" class="cedulaAsis">{{asistente.cedula}}</output>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </md-content>
+      </md-tab>
+    </md-tabs>
+    <md-button id="btnVolver" class="col-md-2 pull-right" ng-click='redirectUsuarios()'>
+        Volver
+    </md-button>
+      </div>
